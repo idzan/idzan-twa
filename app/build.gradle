@@ -22,7 +22,7 @@ android {
         applicationId "marko.idzan.twa"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
+        versionCode 101
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
@@ -47,5 +47,5 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.github.GoogleChrome.custom-tabs-client:customtabs:e849e45c90'
+    implementation 'com.github.GoogleChrome.custom-tabs-client:customtabs:b42451a68'
 }
