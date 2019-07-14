@@ -15,11 +15,8 @@
 -->
 <resources>
     <!-- Theme to create a blank screen while the TWA is opening -->
-    <style name="Theme.LauncherActivity" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+    <style name="Theme.TwaSplash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

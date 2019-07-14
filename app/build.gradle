@@ -16,55 +16,23 @@
 
 apply plugin: 'com.android.application'
 
-def twaManifest = [
-    applicationId: 'marko.idzan.twa',
-    hostName: 'idzan.eu', // The domain being opened in the TWA.
-    launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
-    name: 'Marko Idzan', // The name shown on the Android Launcher.
-    themeColor: '#467DFF', // The color used for the status bar.
-    backgroundColor: '#ffffff' // The color used for the splash screen background.
-]
-
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId twaManifest.applicationId
+        applicationId "marko.idzan.twa"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        // The name for the application on the Android Launcher
-        resValue "string", "appName", twaManifest.name
-
-        // The URL that will be used when launching the TWA from the Android Launcher
-        resValue "string", "launchUrl", "https://" + twaManifest.hostName + twaManifest.launchUrl
-
-        // The hostname is used when building the intent-filter, so the TWA is able to
-        // handle Intents to open https://svgomg.firebaseapp.com.
-        resValue "string", "hostName", twaManifest.hostName
-
-        // This variable below expresses the relationship between the app and the site,
-        // as documented in the TWA documentation at
-        // https://developers.google.com/web/updates/2017/10/using-twa#set_up_digital_asset_links_in_an_android_app
-        // and is injected into the AndroidManifest.xml
-        resValue "string", "assetStatements",
-                '[{ \\"relation\\": [\\"delegate_permission/common.handle_all_urls\\"],' +
-                        '\\"target\\": {\\"namespace\\": \\"web\\", \\"site\\": \\"https://' +
-                        twaManifest.hostName + '\\"}}]'
-
-        // This attribute sets the status bar color for the TWA. It can be either set here or in
-        // `res/values/colors.xml`. Setting in both places is an error and the app will not
-        // compile. If not set, the status bar color defaults to #FFFFFF - white.
-        resValue "color", "colorPrimary", twaManifest.themeColor
-
-        // Sets the color for the background used for the splash screen when launching the
-        // Trusted Web Activity.
-        resValue "color", "backgroundColor", twaManifest.backgroundColor
-
-        // Defines a provider authority fot the Splash Screen
-        resValue "string", "providerAuthority", twaManifest.applicationId + '.fileprovider'
+        manifestPlaceholders = [
+                hostName: "idzan.eu",
+                defaultUrl: "https://idzan.eu",
+                launcherName: "Marko Idzan",
+                assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], ' +
+                        '"target": {"namespace": "web", "site": "https://idzan.eu"}}]'
+        ]
+        resValue "color", "colorPrimary", "#272838"
     }
     buildTypes {
         release {
@@ -79,5 +47,5 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.github.GoogleChrome.custom-tabs-client:customtabs:f7f1f6483c'
+    implementation 'com.github.GoogleChrome.custom-tabs-client:customtabs:e849e45c90'
 }
