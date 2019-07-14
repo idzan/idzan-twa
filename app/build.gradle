@@ -32,7 +32,7 @@ android {
                 assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], ' +
                         '"target": {"namespace": "web", "site": "https://idzan.eu"}}]'
         ]
-        resValue "color", "colorPrimary", "#272838"
+        resValue "color", "colorPrimary", "#467DFF"
     }
     buildTypes {
         release {
